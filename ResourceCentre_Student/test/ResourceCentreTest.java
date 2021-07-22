@@ -123,27 +123,53 @@ public class ResourceCentreTest {
 	}
 
 	@Test
+//Nitai
 	public void testDoLoanCamcorder() {
+		// fail("Not yet implemented");
+		// write your code here
+		assertNotNull("Test is there is valid Chromebook arraylist to add to", camcorderList);
+
+		Boolean ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "8-8-2020");
+		
+		assertTrue("Test if an available item is ok to loan?", ok);
+		
+		ok =  ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "8-8-2020");
+		
+		assertFalse("Test if an same item is NOT ok to loan again?", ok);
+		
+		ResourceCentre.addCamcorder(camcorderList, cc2);
+		cc2.setIsAvailable(false);
+		
+		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0012", "8-8-2020");
+		
+		assertFalse("Test that un-available item is NOT ok to loan?",ok);
+		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0013", "8-8-2020");
+		assertFalse("Test that non-esiting item is NOT ok to loan?",ok);
+	}
+
+	@Test
+//Nitai
+	public void testDoLoanChromebook() {
 		// fail("Not yet implemented");
 		// write your code here
 		assertNotNull("Test is there is valid Chromebook arraylist to add to", chromebookList);
 
-		String allChromebook = ResourceCentre.loanChromebook(chromebookList);
-		String testOutput = "";
-
-		assertEquals("Check that ViewAllChromebooklist", testOutput, allChromebook);
-
-		ResourceCentre.addChromebook(chromebookList, cb1);
+		Boolean ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "8-8-2020");
+		
+		assertTrue("Test if an available item is ok to loan?", ok);
+		
+		ok =  ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "8-8-2020");
+		
+		assertFalse("Test if an same item is NOT ok to loan again?", ok);
+		
 		ResourceCentre.addChromebook(chromebookList, cb2);
-		assertEquals("Test if that Chromebook arraylist size is 2?", 2, chromebookList.size());
+		cc2.setIsAvailable(false);
 		
+		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0012", "8-8-2020");
 		
-	}
-
-	@Test
-	public void testDoLoanChromebook() {
-		// fail("Not yet implemented");
-		// write your code here
+		assertFalse("Test that un-available item is NOT ok to loan?",ok);
+		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0013", "8-8-2020");
+		assertFalse("Test that non-esiting item is NOT ok to loan?",ok);
 	}
 
 	@Test

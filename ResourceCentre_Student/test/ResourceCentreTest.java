@@ -141,6 +141,14 @@ public class ResourceCentreTest {
 	public void testDoReturnChromebook() {
 		//fail("Not yet implemented");
 		// write your code here
+// Crystal
+		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
+		
+		ResourceCentre.doReturnChromebook(chromebookList, cb1.getAssetTag());
+		chromebookList.add(cb1);
+		assertEquals("Test if the Chromebook arraylist is add by 1?", 1, chromebookList.size());
+		
+		assertTrue(cb1.getIsAvailable());
 	}
 	
 	@After
